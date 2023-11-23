@@ -5,7 +5,7 @@ import { middleware } from './middleware/middleware';
 import { reqService } from './req.service';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
-import { Addpipe } from './pipes/validation.pipe';
+import { HttpExceptionFilter } from './filters/httpexception.filter';
 
 @Module({
   imports: [],
@@ -18,7 +18,7 @@ import { Addpipe } from './pipes/validation.pipe';
   },{
     provide:APP_FILTER,
     scope:Scope.REQUEST,
-    useClass:Addpipe
+    useClass:HttpExceptionFilter
   }
 ],
 })

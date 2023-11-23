@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, InternalServerErrorException, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Addpipe } from './pipes/validation.pipe';
 
@@ -17,5 +17,9 @@ export class AppController {
     }
     return output
 
+  }
+  @Get('error')
+  error(){
+    throw new InternalServerErrorException()
   }
 }
